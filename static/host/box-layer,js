@@ -1,0 +1,44 @@
+import { Container, Graphics, Text } from "./pixi.js";
+
+const FONT = "Fredoka, ui-rounded, sans-serif";
+
+function makeBox(radius) {
+  const view = new Container();
+  const body = new Graphics()
+    .roundRect(-radius, -radius, radius * 2, radius * 2, 8)
+    .fill(0xffb703)
+    .stroke({ width: 3, color: 0xffffff });
+  const mark = new Text({ text: "?", style: { fontFamily: FONT, fontSize: radius * 1.5, fontWeight: "600", fill: 0x231f5c } });
+  mark.anchor.set(0.5);
+  view.addChild(body, mark);
+  return view;
+}
+
+export class BoxLayer extends Container {
+  #boxes;
+
+  constructor(positions, radius) {
+    super();
+    this.#boxes = positions.map(([x, y]) => {
+      const view = makeBox(radius);
+      view.position.set(x, y);
+      this.addChild(view);
+      return view;
+    });
+  }
+
+  showAll() {
+    this.#boxes.forEach((box) => (box.visible = true));
+  }
+
+  take(index, respawnSeconds) {
+    const box = this.#boxes[index];
+    if (!box) return;
+    box.visible = false;
+    setTimeout(() => (box.visible = true), respawnSeconds * 1000);
+  }
+
+  update(time) {
+    this.#boxes.forEach((box, index) => (box.rotation = Math.sin(time * 2 + index) * 0.12));
+  }
+}

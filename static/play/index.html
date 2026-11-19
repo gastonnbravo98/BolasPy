@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sumá tu bolita</title>
+  <link rel="stylesheet" href="/static/shared/theme.css">
+  <link rel="stylesheet" href="/static/play/play.css">
+</head>
+<body>
+  <main>
+    <section data-screen-id="join">
+      <h1>Sumá tu bolita</h1>
+      <form id="join-form">
+        <label for="name">Tu nombre</label>
+        <input id="name" maxlength="16" autocomplete="nickname" required>
+
+        <p class="label">Elegí el color de tu bolita</p>
+        <div id="swatches" role="group" aria-label="Color de tu bolita"></div>
+        <label class="custom" for="color">Otro color <input id="color" type="color"></label>
+
+        <button type="submit">Entrar a la carrera</button>
+        <p id="error" role="alert"></p>
+      </form>
+    </section>
+
+    <section data-screen-id="lobby" hidden>
+      <div class="ball" id="ball"></div>
+      <h1 id="lobby-title"></h1>
+      <p id="lobby-text"></p>
+    </section>
+
+    <section data-screen-id="racing" hidden>
+      <button id="boost" type="button">Impulso</button>
+      <button id="powerup" type="button" hidden></button>
+      <p id="powerup-hint">Tocá para empujar tu bolita. Pasá por las cajas ? para conseguir un power-up.</p>
+    </section>
+
+    <section data-screen-id="done" hidden>
+      <h1 id="rank"></h1>
+      <p>Mirá la pantalla grande.</p>
+    </section>
+  </main>
+  <script type="module" src="/static/play/play.js"></script>
+</body>
+</html>

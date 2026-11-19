@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrera de bolitas</title>
+  <link rel="stylesheet" href="/static/shared/theme.css">
+  <link rel="stylesheet" href="/static/host/host.css">
+</head>
+<body data-phase="lobby">
+  <div id="stage"></div>
+
+  <aside id="lobby" class="panel">
+    <h1>Escaneá el QR y sumá tu bolita</h1>
+    <img id="qr" src="/qr.png" alt="Código QR para unirse">
+    <p id="url"></p>
+    <p id="count">0 jugadores</p>
+    <p class="hint">Espacio para largar la carrera</p>
+  </aside>
+
+  <aside id="board" class="panel">
+    <h2>En carrera</h2>
+    <ol id="board-list"></ol>
+  </aside>
+
+  <section id="podium" class="panel">
+    <h2>Podio</h2>
+    <ol id="podium-list"></ol>
+  </section>
+
+  <script type="module" src="/static/host/main.js"></script>
+</body>
+</html>

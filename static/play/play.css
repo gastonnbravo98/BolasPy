@@ -1,0 +1,58 @@
+main { min-height: 100dvh; display: grid; place-items: center; padding: 24px; }
+section { width: min(100%, 420px); display: grid; gap: 18px; text-align: center; }
+h1 { font-size: 2.2rem; line-height: 1.1; margin: 0; }
+p { margin: 0; opacity: 0.85; font-size: 1.1rem; }
+
+form { display: grid; gap: 12px; text-align: left; }
+label, .label { font-size: 1rem; opacity: 0.85; }
+input[type="text"], #name {
+  font: inherit; font-size: 1.4rem;
+  padding: 14px 16px; border-radius: 16px; border: 3px solid transparent;
+  background: var(--paper); color: var(--bg);
+}
+
+button {
+  font: inherit; font-weight: 600; font-size: 1.3rem;
+  padding: 16px; border: 0; border-radius: 16px;
+  background: var(--coral); color: var(--bg);
+  position: relative; overflow: hidden;
+}
+button:active { transform: scale(0.97); }
+button:disabled { opacity: 0.7; }
+
+/* selector de color */
+#swatches { display: flex; flex-wrap: wrap; gap: 10px; }
+.swatch {
+  width: 46px; height: 46px; padding: 0; border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+}
+.swatch[aria-pressed="true"] { border-color: #fff; box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px #fff; }
+.custom { display: flex; align-items: center; gap: 12px; }
+.custom input { width: 56px; height: 40px; padding: 0; border: 0; background: none; }
+
+.ball {
+  width: 96px; height: 96px; border-radius: 50%; justify-self: center;
+  background: var(--mine, var(--coral)); border: 4px solid #fff;
+}
+
+#error { color: var(--sun); min-height: 1.4em; }
+
+/* carrera */
+#boost {
+  width: 100%; aspect-ratio: 1; border-radius: 50%; font-size: 2.2rem;
+  box-shadow: 0 0 0 10px var(--mine, var(--coral));
+  margin: 10px 0;
+}
+#boost.cooling::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 100%;
+  background: rgba(35, 31, 92, 0.45);
+  transform-origin: bottom;
+  animation: recharge var(--cd) linear forwards;
+}
+@keyframes recharge { from { transform: scaleY(1); } to { transform: scaleY(0); } }
+
+#powerup { background: var(--sun); font-size: 1.5rem; padding: 22px; }
+
+@media (prefers-reduced-motion: reduce) {
+  #boost.cooling::after { animation: none; }
+}

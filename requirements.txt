@@ -1,0 +1,4 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pymunk>=6.6
+qrcode[pil]>=7.4
